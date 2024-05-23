@@ -23,3 +23,5 @@ function throttle(fn,ms){
         }
     }
 }
+
+console.log('start')
