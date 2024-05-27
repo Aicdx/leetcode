@@ -10,17 +10,31 @@
  * @return {number[]}
  */
 var sortedSquares = function(nums) {
-    const res = []
-    let left = 0,right = nums.length -1;
-    while(left<=right){
-        const leftNum = nums[left] * nums[left]
-        const rightNum = nums[right] * nums[right]
-        if (leftNum > rightNum){
-            res.unshift(leftNum)
-            left ++
+    //不改变原数组的方法，类似移动零，不能使用数据的unshift的时候使用
+    // let n = nums.length;
+    // const res = new Array(n).fill(0)
+    // let l=0,r = n-1,slow = n-1;
+    // while(l<=r){
+    //     if(nums[l]*nums[l] < nums[r]*nums[r]){
+    //         res[slow--] = nums[r]*nums[r]
+    //         r --
+    //     }else{
+    //         res[slow--] = nums[l]*nums[l]
+    //         l++
+    //     }
+    // }
+    // return res
+    let l = 0,r=nums.length-1;
+    let res = []
+    while(l<=r){
+        const rNum = nums[r]* nums[r]
+        const lNum = nums[l]*nums[l]
+        if(rNum> lNum){
+            res.unshift(rNum)
+            r --
         }else{
-            res.unshift(rightNum)
-            right --
+            res.unshift(lNum)
+            l++
         }
     }
     return res
