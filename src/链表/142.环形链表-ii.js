@@ -18,22 +18,22 @@
  * @return {ListNode}
  */
 var detectCycle = function(head) {
-    //先判断是否为环
-    if (!head || !head.next) return null
+    if(!head || !head.next) return null;
     let slow = head.next,fast = head.next.next;
-    while(fast&& fast.next && fast!==slow){
+    while(fast&&fast.next && fast!==slow){
         fast = fast.next.next;
-        slow = slow.next
+        slow = slow.next;
     }
+    //为环并且相遇
     if(fast === slow){
         slow = head
-        while(slow !== fast){
-            slow = slow.next
-            fast = fast.next
+        while(slow!==fast){
+            slow = slow.next;
+            fast = fast.next;
         }
         return fast
     }
-    return null
+    return null;
 };
 // @lc code=end
 
