@@ -18,6 +18,7 @@
  * @return {ListNode}
  */
 var detectCycle = function(head) {
+    //判断是否为环
     if(!head || !head.next) return null;
     let slow = head.next,fast = head.next.next;
     while(fast&&fast.next && fast!==slow){
