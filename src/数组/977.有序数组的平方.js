@@ -24,6 +24,7 @@ var sortedSquares = function(nums) {
     //     }
     // }
     // return res
+    //左右指针向中间靠拢，因为有序数组，平方后的最大值要么在左边要么在右边
     let l = 0,r=nums.length-1;
     let res = []
     while(l<=r){

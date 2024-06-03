@@ -26,6 +26,9 @@ const searchLeft = function(nums, target){
     leftBorder = -2;
     while(left <= right){
         const mid = Math.floor((right -left)/2) + left
+        // 寻找左边界
+        // target 在mid左边 移动右边
+        // [left -target-mid -- right]
         if(nums[mid] >= target){
             right = mid -1
             leftBorder = right
