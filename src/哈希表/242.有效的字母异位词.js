@@ -11,7 +11,9 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
+    //长度不一致返回
     if(s.length !== t.length) return false;
+    // 创建字母表
     let resSet = new Array(26).fill(0)
     const base = 'a'.charCodeAt()
     for(let i of s){

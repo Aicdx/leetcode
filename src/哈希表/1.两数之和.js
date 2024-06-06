@@ -13,9 +13,11 @@
 var twoSum = function(nums, target) {
     const hash = {}
     for(let i=0;i<nums.length;i++){
+        //当哈希表存在差值，返回
         if(hash[target - nums[i]] !== undefined){
             return [i,hash[target - nums[i]]]
         }
+        // 记录下标
         hash[nums[i]] = i
     }
     return []
