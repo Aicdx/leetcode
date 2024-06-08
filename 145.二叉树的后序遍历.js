@@ -18,15 +18,33 @@
  * @return {number[]}
  */
 var postorderTraversal = function(root) {
+    // 递归
+    // const res = []
+    // const ds = function(root){
+    //     if(root === null) return;
+    //     ds(root.left);
+    //     ds(root.right);
+    //     res.push(root.val)
+    // }
+    // ds(root)
+    // return res
+
+    // 迭代
+    // 入栈 左 -> 右
+    // 出栈 中 -> 右 -> 左 翻转后为 左右中
+    if(!root) return []
     const res = []
-    const ds = function(root){
-        if(root === null) return;
-        ds(root.left);
-        ds(root.right);
-        res.push(root.val)
+    const stack = [root]
+    let cur = null
+    while(stack.length){
+        cur = stack.pop()
+        res.push(cur.val)
+        //左节点入栈
+        cur.left&&stack.push(cur.left)
+        //右节点入栈
+        cur.right&&stack.push(cur.right)
     }
-    ds(root)
-    return res
+    return res.reverse()
 };
 // @lc code=end
 

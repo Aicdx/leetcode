@@ -18,14 +18,31 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
+    // const res = []
+    // const ds = function(root){
+    //     if(root === null) return;
+    //     ds(root.left);
+    //     res.push(root.val)
+    //     ds(root.right)
+    // }
+    // ds(root)
+    // return res
+    // 入栈 左 -> 右
+    // 出栈 左 中 右
     const res = []
-    const ds = function(root){
-        if(root === null) return;
-        ds(root.left);
-        res.push(root.val)
-        ds(root.right)
+    const stack = []
+    let cur = root
+    while(stack.length || cur){
+        if(cur){
+            stack.push(cur)
+            //左
+            cur = cur.left
+        }else{
+            cur = stack.pop()
+            res.push(cur.val)
+            cur = cur.right
+        }
     }
-    ds(root)
     return res
 };
 // @lc code=end
