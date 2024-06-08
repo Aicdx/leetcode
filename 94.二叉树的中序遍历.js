@@ -29,19 +29,36 @@ var inorderTraversal = function(root) {
     // return res
     // 入栈 左 -> 右
     // 出栈 左 中 右
-    const res = []
+    // const res = []
+    // const stack = []
+    // let cur = root
+    // while(stack.length || cur){
+    //     if(cur){
+    //         stack.push(cur)
+    //         //左
+    //         cur = cur.left
+    //     }else{
+    //         cur = stack.pop()
+    //         res.push(cur.val)
+    //         cur = cur.right
+    //     }
+    // }
+    // return res
+    // 统一迭代
     const stack = []
-    let cur = root
-    while(stack.length || cur){
-        if(cur){
-            stack.push(cur)
-            //左
-            cur = cur.left
-        }else{
-            cur = stack.pop()
-            res.push(cur.val)
-            cur = cur.right
+    const res = []
+    if(root) stack.push(root);
+    while(stack.length){
+        const node = stack.pop()
+        if(!node){
+            res.push(stack.pop().val)
+            continue;
         }
+        //中序 左中右 压栈倒序
+        node.right && stack.push(node.right)
+        stack.push(node)
+        stack.push(null)
+        node.left&& stack.push(node.left)
     }
     return res
 };

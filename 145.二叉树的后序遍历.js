@@ -32,19 +32,36 @@ var postorderTraversal = function(root) {
     // 迭代
     // 入栈 左 -> 右
     // 出栈 中 -> 右 -> 左 翻转后为 左右中
-    if(!root) return []
+    // if(!root) return []
+    // const res = []
+    // const stack = [root]
+    // let cur = null
+    // while(stack.length){
+    //     cur = stack.pop()
+    //     res.push(cur.val)
+    //     //左节点入栈
+    //     cur.left&&stack.push(cur.left)
+    //     //右节点入栈
+    //     cur.right&&stack.push(cur.right)
+    // }
+    // return res.reverse()
+    // 统一方法
     const res = []
-    const stack = [root]
-    let cur = null
+    const stack = []
+    if(root) stack.push(root);
     while(stack.length){
-        cur = stack.pop()
-        res.push(cur.val)
-        //左节点入栈
-        cur.left&&stack.push(cur.left)
-        //右节点入栈
-        cur.right&&stack.push(cur.right)
+        const node = stack.pop()
+        if(!node){
+            res.push(stack.pop().val)
+            continue;
+        }
+        //后序 左右中 
+        stack.push(node)
+        stack.push(null)
+        node.right&&stack.push(node.right)
+        node.left&&stack.push(node.left)
     }
-    return res.reverse()
+    return res
 };
 // @lc code=end
 
