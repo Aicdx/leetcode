@@ -25,3 +25,24 @@ function throttle(fn,ms){
 }
 
 console.log('start')
+
+function handleCandies(candies,n){
+    const res = new Array(n).fill(0)
+    let sum = 1;
+    let cur = 0
+    while(candies>0){
+        if(cur === res.length){
+            cur = 0
+        }
+        res[cur] += sum
+        candies -= sum
+        if(candies <= sum){
+            sum = candies
+        }else{
+           sum++
+        }
+        cur++
+    }
+    return res
+}
+console.log(handleCandies(21,5))
