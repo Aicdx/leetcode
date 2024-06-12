@@ -10,10 +10,12 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
+    // *排序成有序数组
     nums.sort((a, b) => a - b)
     const res = [],len = nums.length;
     for(let i=0;i<len;i++){
         let l = i+1,r = len-1,iNum = nums[i]
+        // 剪枝
         if(iNum>0) return res
         if(iNum === nums[i-1]) continue;
         while(l < r){
@@ -23,6 +25,7 @@ var threeSum = function(nums) {
             else if(sum>0) r--
             else{
                 res.push([iNum,lNum,rNum])
+                // 剪枝
                 while(l<r&& nums[l] === nums[l+1]){
                     l++
                 }

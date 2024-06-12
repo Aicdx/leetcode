@@ -15,8 +15,10 @@ var fourSum = function(nums, target) {
     if(len < 4) return res;
     nums.sort((a,b)=> a-b);
     for(let i=0;i<len-3;i++){
+        // 去重
         if(i>0 && nums[i] === nums[i-1]) continue;
         for(let j=i+1;j<len-2;j++){
+            // 去重
             if(j > i+1 && nums[j] === nums[j-1]) continue;
             let l = j+1,r = len-1;
             while(l < r) {
@@ -25,7 +27,7 @@ var fourSum = function(nums, target) {
                 if(sum > target) { r--; continue}
                 res.push([nums[i], nums[j], nums[l], nums[r]]);
 		
-		// 对nums[left]和nums[right]去重
+		        // 对nums[left]和nums[right]去重
                 while(l < r && nums[l] === nums[++l]);
                 while(l < r && nums[r] === nums[--r]);
             }
