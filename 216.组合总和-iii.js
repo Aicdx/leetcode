@@ -11,30 +11,33 @@
  * @return {number[][]}
  */
 var combinationSum3 = function(k, n) {
+    //结果集
     let res = []
-    let path = []
-    let sum = 0
-    const dfs = (path,index) =>{
+    // 递归
+    const dfs = (n,k,index,tempArr,sum) =>{
+        // 剪枝
         if(sum > n){
             return
         }
-        if(path.length === k){
+        if(tempArr.length === k){
             if(sum===n){
-                res.push([...path])
+                // 收集结果
+                res.push([...tempArr])
                 return
             }
         }
-        for(let i = index;i<=9 - (k-path.length-1);i++){
-            path.push(i)
+        for(let i = index;i<=9 - (k-tempArr.length-1);i++){
+            tempArr.push(i)
             sum = sum+i
             index +=1
-            dfs(path,index)
+            dfs(n,k,index,tempArr,sum)
             sum -= i
-            path.pop()
+            tempArr.pop()
         }
     }
-    dfs(path,1)
+    dfs(n,k,1,[],0)
     return res
 };
+
 // @lc code=end
 
