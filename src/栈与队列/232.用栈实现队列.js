@@ -7,6 +7,7 @@
 // @lc code=start
 
 var MyQueue = function() {
+    // 定义入栈和出栈模拟队列
     this.inStack = []
     this.outStack = []
 };
@@ -16,6 +17,7 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
+    // 入队列直接入 this.inStack
     this.inStack.push(x)
 };
 
@@ -23,12 +25,15 @@ MyQueue.prototype.push = function(x) {
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
+    // 当出栈 存在元素时 直接出栈
     if(this.outStack.length){
         return this.outStack.pop()
     }
+    // 否则 全部的入栈 元素加入到出栈队列
     while(this.inStack.length){
         this.outStack.push(this.inStack.pop())
     }
+    // 出栈
     return this.outStack.pop()
 };
 

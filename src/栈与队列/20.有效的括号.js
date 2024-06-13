@@ -17,10 +17,12 @@ var isValid = function(s) {
     }
     const stack = []
     for(let x of s){
+        // 遇到左括号入栈
         if(map[x]){
             stack.push(x)
             continue;
         }
+        // 右括号判断是否与栈顶相等
         if(map[stack.pop()] !==x){
             return false
         }

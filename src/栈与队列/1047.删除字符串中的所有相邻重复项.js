@@ -12,7 +12,7 @@
 var removeDuplicates = function(s) {
     const reslut = []
     for (let i of s){
-        //如果当前值在栈顶出现，则重复，栈弹出
+        //如果当前值在栈顶出现，则重复，栈弹出(此时把栈顶重复元素也删除)
         if(i === reslut[reslut.length-1]){
             reslut.pop()
         }else{

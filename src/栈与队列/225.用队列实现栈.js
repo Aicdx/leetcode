@@ -7,6 +7,7 @@
 // @lc code=start
 
 var MyStack = function() {
+    // 定义队列
     this.queue = []
 };
 
@@ -15,6 +16,7 @@ var MyStack = function() {
  * @return {void}
  */
 MyStack.prototype.push = function(x) {
+    // 直接入队尾
     this.queue.push(x)
 };
 
@@ -22,6 +24,12 @@ MyStack.prototype.push = function(x) {
  * @return {number}
  */
 MyStack.prototype.pop = function() {
+    //  -----------------------
+    //  头      <--          尾
+    //  -----------------------
+    // 当需要pop时，是需要把尾巴最后一个元素弹出
+    // 但是队列只能头先出，所以把 len -1 的元素都弹出后重新加入
+    // 把最后一个元素弹出则为需要的队尾
     let size = this.queue.length - 1;
     while(size--){
         this.queue.push(this.queue.shift())
