@@ -25,20 +25,20 @@ var letterCombinations = function(digits) {
     }
     const resArr = []
     // 回溯函数 digits数字字符串，当前遍历位置 路径表（）
-    const backTracking = (digits,curIndex,path)=>{
+    const backTracking = (digits,startIndex,route)=>{
         // 收集结果
-        if(curIndex === digits.length){
-            resArr.push(path.join(''))
+        if(startIndex === digits.length){
+            resArr.push(route.join(''))
             return;
         }
         // 获取数字对应字母串
-        let tempArr = strMap[digits[curIndex]];
+        let tempArr = strMap[digits[startIndex]];
         for(let i=0;i<tempArr.length;i++){
             // 加入当前字母
-            path.push(tempArr[i])
-            backTracking(digits,curIndex+1,path);
+            route.push(tempArr[i])
+            backTracking(digits,startIndex+1,route);
             // 回溯
-            path.pop()
+            route.pop()
         }
     }
     backTracking(digits,0,[])
