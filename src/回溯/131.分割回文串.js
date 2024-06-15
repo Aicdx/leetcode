@@ -35,10 +35,14 @@ var partition = function(s) {
 };
 // 判断是否为回文子串
 const isPalindrome = (s,l,r)=>{
-    for(let i = l,j = r;i<j ; i++,j--){
-        if(s[i] !== s[j]) return;
+    // for(let i = l,j = r;i<j ; i++,j--){
+    //     if(s[i] !== s[j]) return;
+    // }
+    // return true;
+    while(l<r){
+        if(s[l++] !== s[r--]) return false;
     }
-    return true;
+    return true
 }
 // @lc code=end
 
