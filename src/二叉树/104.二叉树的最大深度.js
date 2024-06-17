@@ -18,20 +18,19 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    const res = [],queue = []
+    let len = 0
+    const queue = []
     if(root) queue.push(root);
     while(queue.length){
         let size = queue.length
-        let curRes = []
         while(size--){
             const node = queue.shift()
-            curRes.push(node.val)
-            node.left && queue.push(node.left)
-            node.right && queue.push(node.right)
+            node.left&&queue.push(node.left)
+            node.right&&queue.push(node.right)
         }
-        res.push(curRes)
+        len++
     }
-    return res.length
+    return len
 };
 // @lc code=end
 
