@@ -11,16 +11,18 @@
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
-    if(nums1.length<nums2.length){
-        let _ = nums1;
+    if(nums1.length > nums2.length){
+        let _ = nums1
         nums1 = nums2
-        nums2 = _;
+        nums2 = _
     }
-    const numSet = new Set(nums1)
+    // 此时n1为短
     const resSet = new Set()
-    for(let i =0;i<nums2.length;i++){
-        if(numSet.has(nums2[i])){
-            resSet.add(nums2[i])
+    // 记录长数组一共出现的数字
+    const numSet = new Set(nums2)
+    for(let i=0;i<nums1.length;i++){
+        if(numSet.has(nums1[i])){
+            resSet.add(nums1[i])
         }
     }
     return Array.from(resSet)
