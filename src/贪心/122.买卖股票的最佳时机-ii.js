@@ -10,6 +10,7 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
+    // 思路，比较前一天和后一天的利润，>0则买入
     let sum = 0
     for(let i =1;i<prices.length;i++){
         sum += Math.max(prices[i]-prices[i-1],0)

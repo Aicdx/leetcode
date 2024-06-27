@@ -11,6 +11,7 @@
  */
 var jump = function(nums) {
     if(nums.length === 1) return 0;
+    //记录当前步数最大范围
     let curIndex = 0;
     let nextIndex = 0;
     let steps = 0;
