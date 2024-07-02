@@ -19,9 +19,22 @@ const testWeightBagProblem = (weight, value, size)=>{
 
     return dp[len - 1][size];
 }
-
+function testWeightBagProblem1(wight, value, size) {
+    const weightLen = wight.length
+    const dp = new Array(size+1).fill(0)
+    // 遍历物品
+    for(let i = 0;i<weightLen;i++){
+        // 遍历容量，当背包容量大于物品重量时，才进入循环
+        for(let j=size;j>=wight[i];j--){
+            dp[j] = Math.max(dp[j],dp[j-wight[i]] + value[i])
+        }
+    }
+    return dp[size]
+}
 function test () {
     console.log(testWeightBagProblem([1, 3, 4, 5], [15, 20, 30, 55], 6));
+    console.log(testWeightBagProblem1([1, 3, 4, 5], [15, 20, 30, 55], 6));
+
 }
 
 test();
