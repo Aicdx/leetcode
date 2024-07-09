@@ -11,6 +11,8 @@
  */
 var monotoneIncreasingDigits = function(n) {
     //转成数组操作
+    //从后往前遍历，如果不递增，借1变为9
+    // 记录借位的位置，借位后的每个都要变成9
     let numArr = n.toString().split('').map(i=>parseInt(i))
     const len = numArr.length
     // 标识是否要变成9（因为求最大）
