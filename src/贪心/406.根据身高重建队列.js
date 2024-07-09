@@ -19,8 +19,10 @@ var reconstructQueue = function(people) {
             return a[1]-b[1]
         }
     })
-    //根据第二个下标k插入
-    for(let i=0;i<people.length;i++){
+    // console.log(people)
+    // [ [ 4, 4 ], [ 5, 0 ], [ 5, 2 ], [ 6, 1 ], [ 7, 0 ], [ 7, 1 ] ]
+    for(let i =0;i<people.length;i++){
+        //直接把people[i][1]的下标当做队列下标，因为后面都是比自己高的
         queue.splice(people[i][1],0,people[i])
     }
     return queue
