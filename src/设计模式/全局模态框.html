@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>全局模态框</title>
+    </head>
+    <style>
+          #modal {
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        text-align: center;
+    }
+    </style>
+    <body>
+        <button id='open'>打开弹框</button>
+        <button id='close'>关闭弹框</button>
+    </body>
+    <script>
+        // const Model = (function () {
+        //     let model = null;
+        //     return function () {
+        //         if (!model) {
+        //             model = document.createElement('div');
+        //             model.innerHTML = '弹框内容';
+        //             model.id ='modal';
+        //             model.style.display = 'none';
+        //             document.body.appendChild(model);
+        //         }
+        //         return model;
+        //     }
+        // })()
+        //   // 点击打开弹框
+        //   document.getElementById('open').addEventListener('click', function () {
+        //     const modal = Model();
+        //     modal.style.display = 'block';
+        // });
+        // // 点击关闭弹框
+        // document.getElementById('close').addEventListener('click', function () {
+        //     const modal = Model();
+        //     modal.style.display = 'none';
+        // });
+        class Model {
+            static instance = null;
+            constructor(modal) {
+                this.modal = modal
+            }
+            static getInstance() {
+                if (!this.instance) {
+                    const modal = document.createElement('div');
+                    modal.innerHTML = '弹框内容';
+                    modal.id ='modal';
+                    modal.style.display = 'none';
+                    document.body.appendChild(modal);
+                    this.instance = new Model(modal);
+                }
+                return this.instance;
+            }
+            open() {
+                this.modal.style.display = 'block';
+            }
+            close() {
+                this.modal.style.display = 'none';
+            }
+        }
+        const modal = Model.getInstance();
+        // 点击打开弹框
+        document.getElementById('open').addEventListener('click', function () {
+            modal.open();
+        });
+        // 点击关闭弹框
+        document.getElementById('close').addEventListener('click', function () {
+            modal.close();
+        });
+    </script>
+</html>
